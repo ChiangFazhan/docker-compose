@@ -6,11 +6,6 @@ services:
     image: shanbumin/php:7.1-nginx-alpine3.8
     ports:
       - 80:80 #测试环境
-      - 81:81 #测试接口平台
-      - 82:82 #laravel5.5 scm接口
-      - 83:83 #供给接口平台
-      - 84:84 #后台
-      - 9001:9001 #rhca_api_platfom_yaf
     volumes:
        - ./nginx/conf/conf.d:/etc/nginx/conf.d
        - ./wwwroot/:/var/www/
@@ -32,64 +27,7 @@ services:
     networks:
        moka:
          ipv4_address: 10.33.0.10
-  #mysqld服务
-  mysqld:
-     container_name: mysql
-     image: shanbumin/mysql:5.7-stretch
-     ports:
-       - 3306:3306
-     volumes:
-       - ./mysql/data:/var/lib/mysql
-     environment:
-       - MYSQL_ROOT_PASSWORD=root
-     restart: always
-     networks:
-       moka:
-         ipv4_address: 10.33.0.5
-  #redis服务
-  redis:
-    container_name: redis
-    image: shanbumin/redis:4.0-alpine3.8
-    ports:
-      - 6379:6379
-    volumes:
-      - ./redis/data:/data
-    restart: always
-    networks:
-      moka:
-        ipv4_address: 10.33.0.110
-  #mongod服务
-  mongod:
-    container_name: mongo
-    image: shanbumin/mongo:3.4-jessie
-    ports:
-      - 27017:27017
-    volumes:
-      - ./mongo/data:/data/db
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
-    restart: always
-    networks:
-      moka:
-        ipv4_address: 10.33.0.112
-  #rabbitmq
-  rabbitmq:
-    container_name: rabbitmq
-    image: shanbumin/rabbitmq:3.7-management-alpine3.8
-    ports:
-      - "15672:15672"
-    hostname: node001
-    volumes:
-      - ./rabbitmq/data:/var/lib/rabbitmq
-    environment:
-      RABBITMQ_ERLANG_COOKIE: EGALBOSXYONYFFPBFFLT
-      RABBITMQ_DEFAULT_USER: root
-      RABBITMQ_DEFAULT_PASS: root
-    restart: always
-    networks:
-      moka:
-        ipv4_address: 10.33.0.114
+
 #自定义虚拟网络
 networks:
   moka:
