@@ -3,10 +3,17 @@
   "description": "docker-compose",
   "keywords": ["docker", "docker-compose"],
   "license": "MIT",
+  "homepage": "https://www.zybuluo.com/Chiang/note/1612902",
   "type": "project",
   "require": {
     "php": ">=7.0.0"
   },
+  "authors": [
+    {
+      "name": "Chiang Fazhan",
+      "email": "1550149004@qq.com"
+    }
+  ],
   "require-dev": {
 
   },

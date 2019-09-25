@@ -9,7 +9,7 @@ services:
       - 81:81 #测试接口平台
       - 82:82 #laravel5.5 scm接口
       - 83:83 #供给接口平台
-      - 84:84 #快钢网后台
+      - 84:84 #后台
       - 9001:9001 #rhca_api_platfom_yaf
     volumes:
        - ./nginx/conf/conf.d:/etc/nginx/conf.d
