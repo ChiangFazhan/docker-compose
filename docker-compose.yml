@@ -5,10 +5,12 @@ services:
     container_name: php-nginx
     image: shanbumin/php:7.1-nginx-alpine3.8
     ports:
-      - 80:80 #测试环境
+      - 8000:80 #测试环境
+      - 8001:81 #crm
+      - 8002:82 #laravel5.5 scm接口
     volumes:
-       - ./nginx/conf/conf.d:/etc/nginx/conf.d
-       - ./wwwroot/:/var/www/
+      - ./nginx/conf/conf.d:/etc/nginx/conf.d
+      - ./wwwroot/:/var/www/
     working_dir: /var/www
     restart: always
     networks:
@@ -22,7 +24,7 @@ services:
     command: ["/usr/sbin/crond","-f"]
     working_dir: /var/www
     volumes:
-       - ./wwwroot/:/var/www/
+      - ./wwwroot/:/var/www/
     restart: always
     networks:
        moka:
@@ -34,4 +36,4 @@ networks:
      driver: bridge
      ipam:
        config:
-         - subnet: 10.33.0.0/16
+        - subnet: 10.33.0.0/16
